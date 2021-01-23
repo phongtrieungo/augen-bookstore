@@ -1,0 +1,8 @@
+:host {
+  .trunkcate {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 190px;
+    overflow: hidden;
+  }
+}

@@ -1,0 +1,12 @@
+<ng-container *ngIf="item">
+    <div class="card" (click)="openCardDetail()" style="cursor: pointer;">
+      <img class="card-img-top img-thumbnail" style="min-height: 360px;" src="{{ item.imageLinks.thumbnail }}" alt="" srcset="">
+      <div class="card-body text-center">
+        <h5 class="card-title trunkcate" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ item.title }}">{{ item.title }}</h5>
+        <p class="card-text" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ item.authors ? item.authors.length > 1 ? item.authors : '' : '' }}">
+          {{ item.authors ? item.authors.length > 1 ? item.authors[0] + ' *' : item.authors[0] : 'Unknown author'}}
+        </p>
+        <p class="card-text">{{ item.publishedDate }}</p>
+      </div>
+    </div>
+</ng-container>
