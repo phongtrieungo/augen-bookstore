@@ -1,0 +1,26 @@
+<ng-container *ngIf="isLoading">
+  <div class="d-flex justify-content-center mt-2">
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="!(isLoading)">
+  <div class="d-block text-center mt-2" *ngIf="books?.length === 0 && !error">
+    No result
+  </div>
+  <div class="d-block text-center mt-2" *ngIf="error">
+    {{ error }}
+  </div>
+  <div class="grid-view mt-3">
+    <augen-card-list-item *ngFor="let book of books" [item]="book"
+      (openCardDetailEmitter)="onOpenBookDetailModal($event)"></augen-card-list-item>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="selectedBook$ | async as currentSelectedBook">
+  <div class="modal fade" id="bookDetailModal" tabindex="-1" aria-labelledby="bookDetailModal" aria-hidden="true">
+    <augen-card-detail [currentSelectedBook]="currentSelectedBook"></augen-card-detail>
+  </div>
+</ng-container>

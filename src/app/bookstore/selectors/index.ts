@@ -28,3 +28,8 @@ export const selectLoadingState = createSelector(
   selectBookstore,
   (state: BookstoreState) => state.isLoading
 );
+
+export const selectSelectedBook = createSelector(
+  selectBookstore,
+  (state: BookstoreState) => state.selectedBook
+)

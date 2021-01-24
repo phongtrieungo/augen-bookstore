@@ -7,11 +7,12 @@ import { CardDetailComponent } from './card-detail/card-detail.component';
 
 const COMPONENTS = [
   SearchInputComponent,
-  CardListItemComponent
+  CardListItemComponent,
+  CardDetailComponent
 ];
 
 @NgModule({
-  declarations: [...COMPONENTS, CardDetailComponent],
+  declarations: [...COMPONENTS],
   imports: [
     CommonModule,
     FormsModule

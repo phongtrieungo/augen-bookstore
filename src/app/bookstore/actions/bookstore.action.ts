@@ -10,30 +10,30 @@ export const SET_LOADING_STATE = '[Bookstore page] Set loading state';
 
 export const setSearchTerm = createAction(
   SET_SEARCH_TERM,
-  props<{ payload: string}>()
+  props<{ payload: string }>()
 );
 
 export const searchBook = createAction(
   SEARCH_BOOK,
-  props<{ payload: string}>()
+  props<{ payload: string }>()
 );
 
 export const searchBookSuccess = createAction(
   SEARCH_BOOK_SUCCESS,
-  props<{ payload: ItemModel[]}>()
+  props<{ payload: ItemModel[] }>()
 );
 
 export const searchBookFail = createAction(
   SEARCH_BOOK_FAIL,
-  props<{ payload: string}>()
+  props<{ payload: string }>()
 );
 
 export const setSelectedBook = createAction(
   SET_SELECTED_BOOK,
-  props<{ payload: ItemModel}>()
+  props<{ payload: ItemModel }>()
 );
 
 export const setLoadingState = createAction(
   SET_LOADING_STATE,
-  props<{ payload: boolean}>()
+  props<{ payload: boolean }>()
 );

@@ -9,9 +9,10 @@ import { BookstoreComponent } from './bookstore.component';
 import { SharedModule } from '../shared/shared.module';
 import * as fromBookstore from './reducer/bookstore.reducer';
 import { BookstoreEffect } from './effects/bookstore.effect';
+import { BookstoreListComponent } from './bookstore-list/bookstore-list.component';
 
 @NgModule({
-  declarations: [BookstoreComponent],
+  declarations: [BookstoreComponent, BookstoreListComponent],
   imports: [
     CommonModule,
     BookstoreRoutingModule,

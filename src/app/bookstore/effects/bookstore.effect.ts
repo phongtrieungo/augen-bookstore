@@ -10,7 +10,7 @@ import { AppState, selectSearchTerm } from '../selectors';
 
 @Injectable()
 export class BookstoreEffect {
-  constructor(private action$: Actions, private bookstoreService: BookstoreService, private store: Store<AppState>) {}
+  constructor(private action$: Actions, private bookstoreService: BookstoreService, private store: Store<AppState>) { }
 
   loadBooks$ = createEffect(() => this.action$.pipe(
     ofType(BookstorePageActions.SET_SEARCH_TERM),
@@ -19,10 +19,10 @@ export class BookstoreEffect {
       if (searchTerm) {
         return this.bookstoreService.searchBook(searchTerm).pipe(
           switchMap(response => [
-            BookstorePageActions.searchBookSuccess({payload: response}),
-            BookstorePageActions.setLoadingState({payload: false})
+            BookstorePageActions.searchBookSuccess({ payload: response }),
+            BookstorePageActions.setLoadingState({ payload: false })
           ]),
-          catchError(error => of(BookstorePageActions.searchBookFail({payload: error})))
+          catchError(error => of(BookstorePageActions.searchBookFail({ payload: error })))
         );
       }
       return EMPTY;

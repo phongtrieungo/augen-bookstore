@@ -31,9 +31,10 @@ export const initialState: State = {
 
 const bookstoreReducer = createReducer(
   initialState,
-  on(BookstorePageActions.setSearchTerm, (state, { payload }) => ({...state, searchTerm: payload })),
-  on(BookstorePageActions.searchBookSuccess, (state, { payload}) => ({...state, books: payload })),
-  on(BookstorePageActions.setLoadingState, (state, { payload }) => ({...state, isLoading: payload }))
+  on(BookstorePageActions.setSearchTerm, (state, { payload }) => ({ ...state, searchTerm: payload })),
+  on(BookstorePageActions.searchBookSuccess, (state, { payload }) => ({ ...state, books: payload })),
+  on(BookstorePageActions.setLoadingState, (state, { payload }) => ({ ...state, isLoading: payload })),
+  on(BookstorePageActions.setSelectedBook, (state, { payload }) => ({ ...state, selectedBook: payload }))
 );
 
 export function reducer(state: State | undefined, action: Action): State {
