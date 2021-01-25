@@ -1,31 +1,33 @@
 <div class="modal-dialog modal-xl modal-lg modal-sm">
-  <div class="modal-content">
-    <div class="modal-header">
-      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-    </div>
-    <div class="modal-body" *ngIf="currentSelectedBook">
-      <div class="d-flex">
-        <augen-card-list-item [item]="currentSelectedBook"></augen-card-list-item>
-        <div style="margin-left: .5rem;">
-          <p>{{ currentSelectedBook.description ? currentSelectedBook.description : 'No description' }}</p>
+  <form [formGroup]="bookDetailForm" (ngSubmit)="onBuyBook()">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" *ngIf="currentSelectedBook">
+        <div class="d-flex">
+          <augen-card-list-item [item]="currentSelectedBook"></augen-card-list-item>
+          <div style="margin-left: .5rem;">
+            <p>{{ currentSelectedBook.description ? currentSelectedBook.description : 'No description' }}</p>
+          </div>
+        </div>
+
+        <p class="mt-4">Ship via</p>
+        <hr>
+        <div class="btn-group w-100" role="group" aria-label="Shipping method">
+          <input value="motorbike" type="radio" class="btn-check" name="service" id="motorbike" autocomplete="off" formControlName="service">
+          <label class="btn btn-outline-primary" for="motorbike">Motorbike ({{shippingCost.motobike | currency}})</label>
+
+          <input value="train" type="radio" class="btn-check" name="service" id="train" autocomplete="off" formControlName="service">
+          <label class="btn btn-outline-secondary" for="train">Train ({{shippingCost.train | currency}})</label>
+
+          <input value="aircraft" type="radio" class="btn-check" name="service" id="aircraft" autocomplete="off" formControlName="service">
+          <label class="btn btn-outline-warning" for="aircraft">Aircraft ({{shippingCost.aircraft | currency}})</label>
         </div>
       </div>
-
-      <p class="mt-4">Ship via</p>
-      <hr>
-      <div class="btn-group w-100" role="group" aria-label="Shipping method">
-        <input type="radio" class="btn-check" name="btnradio" id="motobike" autocomplete="off" checked>
-        <label class="btn btn-outline-primary" for="motobike">Motobike (20$)</label>
-
-        <input type="radio" class="btn-check" name="btnradio" id="train" autocomplete="off">
-        <label class="btn btn-outline-secondary" for="train">Train (40$)</label>
-
-        <input type="radio" class="btn-check" name="btnradio" id="aircraft" autocomplete="off">
-        <label class="btn btn-outline-warning" for="aircraft">Aircraft (60$)</label>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-danger w-100">Buy</button>
       </div>
     </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-danger w-100">Buy</button>
-    </div>
-  </div>
+  </form>
 </div>

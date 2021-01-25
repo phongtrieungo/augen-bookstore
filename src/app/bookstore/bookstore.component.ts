@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 
 import { AppState, selectBooks, selectLoadingState } from './selectors';
-import { searchBookSuccess, setLoadingState, setSearchTerm } from './actions/bookstore.action';
+import { getShippingCost, searchBookSuccess, setLoadingState, setSearchTerm } from './actions/bookstore.action';
 
 @Component({
   selector: 'augen-bookstore',
@@ -20,6 +20,7 @@ export class BookstoreComponent implements OnInit {
   constructor(private store: Store<AppState>) { }
 
   ngOnInit(): void {
+    this.store.dispatch(getShippingCost());
   }
 
   searchBook(searchTerm: string): void {

@@ -1,4 +1,5 @@
 import { createSelector } from '@ngrx/store';
+import { ShippingCost } from 'src/app/models/shipping-cost.model';
 import { ItemModel } from '../../models/item.model';
 
 export interface BookstoreState {
@@ -6,6 +7,9 @@ export interface BookstoreState {
   books: ItemModel[];
   selectedBook: ItemModel;
   isLoading: boolean;
+  shippingCost: ShippingCost;
+  boughtBook: any;
+  deliveryInfo: any;
 }
 
 export interface AppState {
@@ -32,4 +36,19 @@ export const selectLoadingState = createSelector(
 export const selectSelectedBook = createSelector(
   selectBookstore,
   (state: BookstoreState) => state.selectedBook
-)
+);
+
+export const selectShippingCost = createSelector(
+  selectBookstore,
+  (state: BookstoreState) => state.shippingCost
+);
+
+export const selectBoughtBook = createSelector(
+  selectBookstore,
+  (state: BookstoreState) => state.boughtBook
+);
+
+export const selectDeliveryInfo = createSelector(
+  selectBookstore,
+  (state: BookstoreState) => state.deliveryInfo
+);

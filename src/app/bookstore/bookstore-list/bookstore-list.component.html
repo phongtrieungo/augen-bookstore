@@ -6,6 +6,35 @@
   </div>
 </ng-container>
 
+<ng-container *ngIf="deliveryInfo$ | async as deliveryInfo">
+  <div class="alert alert-success alert-dismissible fade show" role="alert">
+    <h4 class="alert-heading">Delivert Information</h4>
+    <hr>
+    <div class="d-flex flex-column">
+      <ng-container *ngIf="deliveryInfo.driverName">
+        <p>Driver Name : {{ deliveryInfo.driverName }}</p>
+        <p>Mobile Phone : {{ deliveryInfo.mobile }}</p>
+        <p>Delivery Date : {{ deliveryInfo.deliveryDate }}</p>
+        <p>Cost : {{ deliveryInfo.cost }}</p>
+      </ng-container>
+
+      <ng-container *ngIf="deliveryInfo.trainNo">
+        <p>Train Number : {{ deliveryInfo.trainNo }}</p>
+        <p>Station Of Arrival : {{ deliveryInfo.stationOfArrival }}</p>
+        <p>Date Of Arrival : {{ deliveryInfo.dateOfArrival }}</p>
+        <p>Cost : {{ deliveryInfo.cost }}</p>
+      </ng-container>
+
+      <ng-container *ngIf="deliveryInfo.flightNo">
+        <p>Flight Number : {{ deliveryInfo.flightNo }}</p>
+        <p>Gate Of Arrival : {{ deliveryInfo.gateOfArrival }}</p>
+        <p>Date Of Arrival : {{ deliveryInfo.dateOfArrival }}</p>
+        <p>Cost : {{ deliveryInfo.cost }}</p>
+      </ng-container>
+    </div>
+  </div>
+</ng-container>
+
 <ng-container *ngIf="!(isLoading)">
   <div class="d-block text-center mt-2" *ngIf="books?.length === 0 && !error">
     No result
@@ -21,6 +50,13 @@
 
 <ng-container *ngIf="selectedBook$ | async as currentSelectedBook">
   <div class="modal fade" id="bookDetailModal" tabindex="-1" aria-labelledby="bookDetailModal" aria-hidden="true">
-    <augen-card-detail [currentSelectedBook]="currentSelectedBook"></augen-card-detail>
+    <augen-card-detail *ngIf="shippingCost$ | async as cost"
+      [currentSelectedBook]="currentSelectedBook"
+      [shippingCost]="cost"
+      (buyBookEmitter)="buyBook($event)">
+
+    </augen-card-detail>
   </div>
 </ng-container>
+
+

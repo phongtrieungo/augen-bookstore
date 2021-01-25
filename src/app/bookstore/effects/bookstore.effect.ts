@@ -5,7 +5,7 @@ import { EMPTY, of } from 'rxjs';
 
 import { BookstoreService } from '../services/bookstore.service';
 import * as BookstorePageActions from '../actions/bookstore.action';
-import { catchError, mergeMap, switchMap, withLatestFrom } from 'rxjs/operators';
+import { catchError, map, mergeMap, switchMap, withLatestFrom } from 'rxjs/operators';
 import { AppState, selectSearchTerm } from '../selectors';
 
 @Injectable()
@@ -27,5 +27,21 @@ export class BookstoreEffect {
       }
       return EMPTY;
     })
+  ));
+
+  loadShippingCost$ = createEffect(() => this.action$.pipe(
+    ofType(BookstorePageActions.GET_SHIPPING_COST),
+    mergeMap(() => this.bookstoreService.getShippingCost().pipe(
+      map(response => BookstorePageActions.getShippingCostSuccess({payload: response})),
+      catchError(error => of(BookstorePageActions.getShippingCostFail({payload: error})))
+    ))
+  ));
+
+  buyBook$ = createEffect(() => this.action$.pipe(
+    ofType(BookstorePageActions.BUY_BOOK),
+    mergeMap(({payload}) => this.bookstoreService.buyBook(payload).pipe(
+      map(response => BookstorePageActions.buyBookSuccess({payload: response})),
+      catchError(error => of(BookstorePageActions.buyBookFail({payload: error})))
+    ))
   ));
 }
