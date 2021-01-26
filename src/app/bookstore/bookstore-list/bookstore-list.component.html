@@ -50,13 +50,9 @@
 
 <ng-container *ngIf="selectedBook$ | async as currentSelectedBook">
   <div class="modal fade" id="bookDetailModal" tabindex="-1" aria-labelledby="bookDetailModal" aria-hidden="true">
-    <augen-card-detail *ngIf="shippingCost$ | async as cost"
-      [currentSelectedBook]="currentSelectedBook"
-      [shippingCost]="cost"
-      (buyBookEmitter)="buyBook($event)">
+    <augen-card-detail *ngIf="shippingCost$ | async as cost" [currentSelectedBook]="currentSelectedBook"
+      [shippingCost]="cost" (buyBookEmitter)="buyBook($event)">
 
     </augen-card-detail>
   </div>
 </ng-container>
-
-

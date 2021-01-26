@@ -1,27 +1,39 @@
-# AugenBookstore
+# Running project instruction
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.1.0.
+## Prerequistition
 
-## Development server
+- NodeJS v12.5
+- NPM v6.9.0
+- PHP v8
+- Composer
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Frontend Application
 
-## Code scaffolding
+1. Installing Angular CLI - `npm i -g @angular/cli`.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+2. Installing the packages - `npm i`
 
-## Build
+3. Starting the web client application - `ng serve`
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Application design
 
-## Running unit tests
+The application is structured based on standard structure of an normal Angular application so that it can be easy to follow for every developer.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+The state management is used to ensure the consistency of data management as well as implementation flow.
 
-## Running end-to-end tests
+The UI pattern smart and presentational component will be used to ensure the seperation of concern when smart components will be responsible for handling business logic while presentational components will display data only. They also have OnPush change detection strategy for improving performance.
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+## Backend Application
 
-## Further help
+1. Navigating to folder serve
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+2. Installing package - `composer install`
+
+3. Starting the backend application - `php artisan serve`
+
+## Time summary
+
+- Preparation: 2 hours
+- Coding: 8 hours
+- Styling: 1 hour
+- Building and test: 1 hour

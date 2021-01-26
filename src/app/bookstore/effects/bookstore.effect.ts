@@ -26,22 +26,28 @@ export class BookstoreEffect {
         );
       }
       return EMPTY;
-    })
+    }),
+    catchError(error => {
+      this.store.dispatch(BookstorePageActions.setLoadingState({ payload: false }));
+      return of(BookstorePageActions.searchBookFail({ payload: error }))
+    }),
   ));
 
   loadShippingCost$ = createEffect(() => this.action$.pipe(
     ofType(BookstorePageActions.GET_SHIPPING_COST),
     mergeMap(() => this.bookstoreService.getShippingCost().pipe(
-      map(response => BookstorePageActions.getShippingCostSuccess({payload: response})),
-      catchError(error => of(BookstorePageActions.getShippingCostFail({payload: error})))
-    ))
+      map(response => BookstorePageActions.getShippingCostSuccess({ payload: response })),
+      catchError(error => of(BookstorePageActions.getShippingCostFail({ payload: error })))
+    )),
+    catchError(error => of(BookstorePageActions.getShippingCostFail({ payload: error })))
   ));
 
   buyBook$ = createEffect(() => this.action$.pipe(
     ofType(BookstorePageActions.BUY_BOOK),
-    mergeMap(({payload}) => this.bookstoreService.buyBook(payload).pipe(
-      map(response => BookstorePageActions.buyBookSuccess({payload: response})),
-      catchError(error => of(BookstorePageActions.buyBookFail({payload: error})))
-    ))
+    mergeMap(({ payload }) => this.bookstoreService.buyBook(payload).pipe(
+      map(response => BookstorePageActions.buyBookSuccess({ payload: response })),
+      catchError(error => of(BookstorePageActions.buyBookFail({ payload: error })))
+    )),
+    catchError(error => of(BookstorePageActions.buyBookFail({ payload: error })))
   ));
 }

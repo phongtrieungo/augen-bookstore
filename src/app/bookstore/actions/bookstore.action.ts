@@ -36,7 +36,7 @@ export const searchBookSuccess = createAction(
 
 export const searchBookFail = createAction(
   SEARCH_BOOK_FAIL,
-  props<{ payload: string }>()
+  props<{ payload: [] }>()
 );
 
 export const setSelectedBook = createAction(
